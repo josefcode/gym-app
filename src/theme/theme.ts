@@ -1,4 +1,4 @@
-import { extendTheme} from '@gluestack-ui/'
+import { extendTheme} from 'native-base'
 
 export const Theme = extendTheme({
 
