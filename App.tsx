@@ -6,6 +6,7 @@ import { SignIn } from './src/screens/Signin';
 import { Theme } from './src/theme/theme';
 import { SignUp } from './src/screens/SignUp';
 import { Routes } from './src/routes';
+import { Home } from './src/screens/Home';
 
 export default function App() {
   const [fontsLoaded] = useFonts({ Roboto_400Regular, Roboto_700Bold})

@@ -1,12 +1,12 @@
 import { Input as NativeBaseInput, IInputProps}  from 'native-base'
 
-export const Input = ({...rest}: IInputProps) => {
+export const Input = ({color = 'gray.700', ...rest}: IInputProps) => {
   return (
     <NativeBaseInput   
     variant="outline"
     size="md"
     h = {50}
-    bg= "gray.700"
+    bg= {color}
     mb = {5}
     color = "white"
     placeholderTextColor= "gray.300"
