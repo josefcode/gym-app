@@ -16,7 +16,7 @@ export const HistoryHeader = ({title} : Props) => {
     alignItems='center' 
     justifyContent='center'
     >
-        <Heading color = 'gray.100' fontSize='lg'>
+        <Heading color = 'gray.100' fontSize='lg'  fontFamily="heading" >
         {title}
         </Heading>
   </Center>

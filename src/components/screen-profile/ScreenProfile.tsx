@@ -1,16 +1,56 @@
-import { HStack, Heading, ScrollView, Skeleton, Text, VStack } from "native-base"
+import {  HStack, Heading, ScrollView, Skeleton, Text, VStack, useToast } from "native-base"
 import { HistoryHeader } from "../history-header/HistoryHeader"
 import { UserPhoto } from "../user-photo/UserPhoto"
 import { Input } from "../input/Input"
 import { Button } from "../button/Button"
 import { useState } from "react"
-import { TouchableOpacity } from "react-native"
+import { TouchableOpacity, Alert} from "react-native"
+import * as imagePicker from 'expo-image-picker'
+import * as FileSystem from 'expo-file-system';
 
 
 export const ScreenProfile = () => {
+
     const photoSize = 100
 
+    const toast = useToast()
+
     const [ photoIsLoading, setPhotoIsLoading ] = useState(false)
+    const [userPhoto, setUserPhoto] = useState('https://avatars.githubusercontent.com/u/81826528?s=400&u=3e92f642425817729583bad23e3f1216c81561a4&v=4')
+
+    const handleUserPhotoSelect = async () => {
+        setPhotoIsLoading(true)
+        try {
+            const photoSelected = await imagePicker.launchImageLibraryAsync({
+                mediaTypes: imagePicker.MediaTypeOptions.Images,
+                quality: 1,
+                aspect: [4, 4],
+                allowsEditing: true,
+             })
+
+             if(photoSelected.canceled){
+                return;
+             }
+
+             if(photoSelected.assets[0].uri){
+                const photoInfo = await FileSystem.getInfoAsync(photoSelected.assets[0].uri);
+            
+                if(photoInfo.size && (photoInfo.size / 1024 / 1024) > 5){
+                  return  toast.show({
+                    title : 'Essa  imagem e muito grande. Escolha uma de ate 5MB',
+                    placement: 'top',
+                    bgColor: 'red.500'
+                  })
+                }
+             setUserPhoto(photoSelected.assets[0].uri)
+             }
+        } catch (error) {
+            console.log(error)
+        }finally {
+            setPhotoIsLoading(false)
+        }
+    }
+
   return (
     <VStack>
         <HistoryHeader title = "Perfil" />
@@ -23,7 +63,6 @@ export const ScreenProfile = () => {
         >
             {
                 photoIsLoading ?
-                
                 <Skeleton
                  w = {photoSize}
                  h = {photoSize}
@@ -33,15 +72,15 @@ export const ScreenProfile = () => {
                 />
                 :
                 
-            <UserPhoto
-               size = {photoSize}
-               source = {{ uri:'https://avatars.githubusercontent.com/u/81826528?v=4'}}
-               alt = "profile image"
-               mb = {2}
-            />
+                <UserPhoto
+                size = {photoSize}
+                source = {{ uri:userPhoto}}
+                alt = "profile image"
+                mb = {2}
+                />
             }
             <TouchableOpacity>
-            <Text color = 'green.500' fontSize = 'md'>
+            <Text color = 'green.500' fontSize = 'md' onPress={handleUserPhotoSelect}>
                 Alterar foto
             </Text>
             </TouchableOpacity>

@@ -10,7 +10,7 @@ export const HistoryCard = ({title, desc} : Props) => {
   return (
     <HStack w = 'full' px = {5} py = {4} bg= 'gray.600' rounded='md' alignItems= 'center' mb = {5}>
         <VStack mr = {5} flex = {1}>
-            <Heading color = 'white' fontSize='md' textTransform='capitalize'>
+            <Heading color = 'white' fontSize='md' textTransform='capitalize'  fontFamily="heading" >
             {title}
             </Heading>
 
