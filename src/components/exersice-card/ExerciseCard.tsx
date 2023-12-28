@@ -20,7 +20,7 @@ export const ExerciseCard = ({imageUrl, title, detail,  ...rest} : Props) => {
             rounded = {5}
             />
             <VStack ml= {4} flex = {1}>
-                <Heading mb = {2} color = 'gray.200' fontSize = 'lg' fontWeight='bold'>
+                <Heading mb = {2} color = 'gray.200' fontSize = 'lg' fontWeight='bold'  fontFamily="heading" >
                 {title}
                 </Heading>
                 <Text color = 'gray.300' numberOfLines= {2} overflow='hidden'>

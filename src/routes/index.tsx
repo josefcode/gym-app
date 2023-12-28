@@ -12,8 +12,7 @@ export const Routes = () => {
   return (
 
     <NavigationContainer theme = {theme}>
-        {/* <AuthRoutes /> */}
-        <AppRoutes />
+        <AuthRoutes />
     </NavigationContainer>
   
   )

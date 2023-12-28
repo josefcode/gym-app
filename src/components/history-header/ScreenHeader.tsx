@@ -46,7 +46,7 @@ export const ScreenHeader = () => {
           )
         }}
         renderSectionHeader = {({section}) => (
-          <Heading color = "gray.200" fontSize='md' mt = {10} mb = {3}>
+          <Heading color = "gray.200" fontSize='md' mt = {10} mb = {3}  fontFamily="heading" >
               {section.date.toString()}
           </Heading>
         )}

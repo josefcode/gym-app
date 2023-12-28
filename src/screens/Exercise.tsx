@@ -29,7 +29,7 @@ export const Exercise = () => {
         </TouchableOpacity>
 
           <HStack justifyContent='space-between' mt = {4} mb = {8}alignItems='center'>
-            <Heading color = 'gray.100' fontSize='md' flexShrink={1}>
+            <Heading color = 'gray.100' fontSize='md' flexShrink={1}  fontFamily="heading" >
               Puxada Frontal
             </Heading>
              <HStack alignItems='center'>
