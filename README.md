@@ -1,5 +1,5 @@
 <h1>Gym App</h1>
-<h3>Technology used to built this app:</h3>
+<h3>The technologies utilized in developing this app</h3>
 <ul>
   <li>React Native</li>
   <li>Reactjs</li>
